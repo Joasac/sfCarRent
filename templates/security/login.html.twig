@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' href="{{ asset('styles/style2.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container-sm my-container mt-5">
+    <main class="form-signin w-100 m-auto">
+        <form method="post">
+            <img class="my-image" src="{{ asset('img/favicon.png') }}" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal text-center bold-text">Please Sign In</h1>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="name@example.com" value="{{ last_username }}" required autofocus>
+                <label for="inputEmail">Email address</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
+                <label for="inputPassword">Password</label>
+                <span class="password-toggle" onclick="togglePasswordVisibility()">
+                    <i class="bi bi-eye-slash"></i>
+                </span>
+            </div>
+
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                    Remember me
+                </label>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn btn-lg btn-primary w-100 py-2" type="submit">Sign in</button>
+
+            <div class="mt-3 text-center">
+                <p class="text-muted">Don't have an account? <a href="{{ path('app_register') }}">Sign Up</a></p>
+                <p class="text-muted">Forgot your password? 
+                    <a href="mailto:example@example.com?subject=Password Reset&body=Please provide your username or email address to initiate the password reset process.">Contact Us</a>
+                </p>
+            </div>
+        </form>
+    </main>
+</div>
+<p class="mt-5 mb-3 text-body-secondary text-center">© Joasac Limited 2024</p>
+{% endblock %}

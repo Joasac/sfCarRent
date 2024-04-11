@@ -1,0 +1,26 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+    
+app_forgot_password:
+    path: /forgot-password
+    controller: App\Controller\SecurityController::forgotPassword
+
+search_results:
+    path: /car/search-results
+    controller: App\Controller\CarController::search
+    methods: [ 'GET', 'POST']
+
+search:
+    path: /search
+    controller: App\Controller\SearchController::search
+    methods: ['GET']
+
+image_list:
+    path: /images
+    controller: App\Controller\ImageController::list
+    methods: GET
+
+

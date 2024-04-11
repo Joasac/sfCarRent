@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' href="{{ asset('styles/style2.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container-sm my-container mt-3 w-75">
+  <main class="form-signin w-75 m-auto"> {# Adjust the width here #}
+    {{ form_start(form) }}
+      <img class="my-image" src="{{ asset('img/favicon.png') }}" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal text-center bold-text">SignUp</h1>
+
+      {{ form_row(form.fullname, {'attr': {'class': 'form-control', 'placeholder': 'Full Name'}}) }}
+
+      {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'name@example.com'}}) }}
+
+      {{ form_row(form.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Password', 'autocomplete': 'new-password'}}) }}
+
+      <div class="form-check text-start my-3">
+        {{ form_widget(form.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+        {{ form_label(form.agreeTerms, 'I accept all terms & condition', {'label_attr': {'class': 'form-check-label'}}) }}
+      </div>
+
+      <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+
+      <div>
+         <p class="mt-4 text1">Already have an account? <a href="{{ path('app_login') }}" style="text-decoration: underline;">Login now</a></p>
+      </div>
+    {{ form_end(form) }}
+  </main>
+</div>
+<p class="mt-4 mb-3 text-body-secondary text-center">© Joasac Limited 2024</p>
+{% endblock %}
+
+
+
+
